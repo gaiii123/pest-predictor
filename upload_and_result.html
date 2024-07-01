@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload and Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #000000;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center; /* Align logo and text vertically */
+        }
+        
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="file"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #000000;
+            border-radius: 4px;
+            width: 100%;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center; /* Center align the result box content */
+        }
+        .logout-btn {
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: rgb(0, 0, 0);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>  
+    <h1>
+        
+        Pest Predictor
+    </h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <input type="submit" value="Upload">
+    </form>
+    <a class="logout-btn" href="/logout">Logout</a>
+    {% if result %}
+    <div class="result">
+        <h2>Prediction Result</h2>
+        <p>Predicted Class: {{ result }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
